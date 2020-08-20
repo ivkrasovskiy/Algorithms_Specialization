@@ -33,8 +33,10 @@ def min_cut(g):
         vertices.pop(vertices.index(v))
 
         for edge in edges:
-            if edge[0] == v: edge[0] = u
-            if edge[1] == v: edge[1] = u
+            if edge[0] == v:
+                edge[0] = u
+            if edge[1] == v:
+                edge[1] = u
 
         edges[:] = [edge for edge in edges if edge[0] != edge[1]]
 
@@ -47,13 +49,9 @@ def loop_min_cut(g):
 
     n = len(g[0])
 
-    print('g:', n, n_best)
     iterations = n * n
 
-    print('will perform', iterations, 'iterations')
-
     for i in range(iterations):
-        print(100 * i / iterations, '%')
 
         g_copy = (g[0][:], [edge[:] for edge in g[1]])
 
@@ -72,3 +70,6 @@ def main():
         g = build_graph(f.read())
 
         print(len(loop_min_cut(g)))
+
+
+main()
